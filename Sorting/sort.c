@@ -35,9 +35,12 @@ void swap(int* a, int* b)
 
 int partition(size_t start, size_t end, int arr[])
 {
-	// Use the last element as pivot
-	int pivot = arr[end - 1];
+	// Use random element as pivot
+	size_t piv_start = rand() % (end - start) + start;
+	int pivot = arr[piv_start];
+	swap(&arr[piv_start], &arr[end - 1]);
 	size_t piv_id = start;
+
 	// Move all the elements smaller than the pivot to the left end
 	for (size_t idx = start; idx < end - 1; idx++) {
 		if (arr[idx] < pivot) {

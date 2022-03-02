@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "sort.h"
 
@@ -8,16 +9,15 @@
  * @brief Generate a random array of len elements.
  *
  * @param len Number of elements
- * @param seed Seed used by the RNG
  * @param max_val Upper bound of the array
  * @return int* points to the start of the array
  */
-int* generate_array(size_t len, unsigned int seed, int max_val);
+int* generate_array(size_t len, size_t max_val);
 
 int main(int argc, char const* argv[argc + 1])
 {
-	size_t len = 10;
-	unsigned int func_id = 0;
+	size_t len = 32;
+	unsigned int func_id = 1;
 	// Get arguments from the user
 	if (argc == 3) {
 		len = atol(argv[1]);
@@ -27,7 +27,7 @@ int main(int argc, char const* argv[argc + 1])
 		return EXIT_FAILURE;
 	}
 
-	int* arr = generate_array(len, 7, 9999);
+	int* arr = generate_array(len, len * 5);
 	// int arr[] = {7, 1, 3, 0, 2, 6, 5, 4, 8, 9};
 	int* sorted_arr = malloc(sizeof(int) * len);
 	sorting_function[func_id](len, arr, sorted_arr);
@@ -43,13 +43,13 @@ int main(int argc, char const* argv[argc + 1])
 }
 
 // Generate a random array of given size
-int* generate_array(size_t len, unsigned int seed, int max_val)
+int* generate_array(size_t len, size_t max_val)
 {
 	// Get memory for array
 	size_t arr_size = sizeof(int) * len;
 	int* arr = malloc(arr_size);
 
-	srand(seed);
+	srand(time(NULL));
 	// Fill it with random values
 	for (size_t i = 0; i < len; i++) {
 		arr[i] = rand() % max_val;

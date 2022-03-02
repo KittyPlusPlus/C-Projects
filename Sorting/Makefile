@@ -5,8 +5,8 @@ LIGFLAGS = -lm
 ## User files 
 obj_files = main.o sort.o
 exec = sort.app
-arg1 = 10
-arg2 = 2
+arg1 = 32
+arg2 = 1
 
 ## main rules
 $(exec): $(obj_files)
@@ -23,4 +23,4 @@ run: $(exec)
 	./$(exec) $(arg1) $(arg2)
 
 clean:
-	-rm -r $(obj_files) $(exec) out.txt
+	-rm -r $(obj_files) $(exec)
