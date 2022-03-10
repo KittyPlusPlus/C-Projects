@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Werror -Wextra -Wshadow -pedantic
+CFLAGS = -g -std=c17 -Wall -Werror -Wextra -Wshadow -pedantic
 LIGFLAGS = -lm
 
 ## User files 

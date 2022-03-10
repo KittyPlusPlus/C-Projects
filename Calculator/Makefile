@@ -1,6 +1,6 @@
 ## Compiler directives
 CC := gcc
-CFLAGS := -std=c17 -Wall -Wextra -Werror -pedantic -Wsign-conversion
+CFLAGS := -g -std=c17 -Wall -Wextra -Werror -pedantic -Wsign-conversion
 LIBFLGS := -lm
 
 ## User files
