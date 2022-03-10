@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NUM_FUNCS 3
+enum { MERGE, QUICK, SORT_COUNT };
 typedef void sorting_funcs(size_t, int*, int*);
 
 // Sorting Functions
@@ -25,15 +25,6 @@ void merge_sort(size_t len, int arr[len], int sorted_arr[len]);
  * @param[in] arr Input Array
  * @param[out] sorted_arr Store the sorted array
  */
-void rec_merge_sort(size_t len, int arr[len], int sorted_arr[len]);
-
-/**
- * @brief Implement the Quick Sort algorithm
- *
- * @param len Length of the array
- * @param[in] arr Input Array
- * @param[out] sorted_arr Store the sorted array
- */
 void quick_sort(size_t len, int arr[len], int sorted_arr[len]);
 
 /**
@@ -45,7 +36,7 @@ void quick_sort(size_t len, int arr[len], int sorted_arr[len]);
 void print_array(size_t len, int arr[len]);
 
 // Sorting functions available
-extern sorting_funcs* sorting_function[NUM_FUNCS];
-extern char* sort_name[NUM_FUNCS];
+extern sorting_funcs* sorting_function[SORT_COUNT];
+extern char* sort_name[SORT_COUNT];
 
 #endif

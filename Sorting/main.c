@@ -17,11 +17,11 @@ int* generate_array(size_t len, size_t max_val);
 int main(int argc, char const* argv[argc + 1])
 {
 	size_t len = 32;
-	unsigned int func_id = 1;
+	unsigned int sort_id = 1;
 	// Get arguments from the user
 	if (argc == 3) {
 		len = atol(argv[1]);
-		func_id = atoi(argv[2]);
+		sort_id = atoi(argv[2]);
 	} else {
 		printf("Usage: %s <length of the array> <function-id>\n", argv[0]);
 		return EXIT_FAILURE;
@@ -30,10 +30,10 @@ int main(int argc, char const* argv[argc + 1])
 	int* arr = generate_array(len, len * 5);
 	// int arr[] = {7, 1, 3, 0, 2, 6, 5, 4, 8, 9};
 	int* sorted_arr = malloc(sizeof(int) * len);
-	sorting_function[func_id](len, arr, sorted_arr);
+	sorting_function[sort_id](len, arr, sorted_arr);
 
 	// Print the contents of the array
-	printf("Sorting with %s\nSorted Array: ", sort_name[func_id]);
+	printf("Sorting with %s\nSorted Array: ", sort_name[sort_id]);
 	print_array(len, sorted_arr);
 
 	// Free array and return

@@ -1,7 +1,7 @@
 #include "sort.h"
 
-sorting_funcs* sorting_function[NUM_FUNCS] = {merge_sort, quick_sort, rec_merge_sort};
-char* sort_name[NUM_FUNCS] = {"Merge Sort", "Quick Sort", "Merge Sort[Recursive]"};
+sorting_funcs* sorting_function[SORT_COUNT] = {[MERGE] = merge_sort, [QUICK] = quick_sort};
+char* sort_name[SORT_COUNT] = {[MERGE] = "Merge Sort", [QUICK] = "Quick Sort"};
 
 // ================ Auxilliary functions ================ //
 void copy_array(size_t len, int src[len], int dst[len])
@@ -66,23 +66,6 @@ void recursive_part(size_t start, size_t end, int arr[])
 	recursive_part(pos + 1, end, arr);
 }
 
-void recursive_merge(size_t start, size_t end, int len, int a[len], int b[len])
-{
-	// Return single element arrays
-	if (start == end - 1) return;
-
-	// Recursively sort left and right partitions
-	size_t mid = (start + end) / 2;
-	recursive_merge(start, mid, len, a, b);
-	recursive_merge(mid, end, len, a, b);
-
-	// Merge left, right partitions and write it back to main array
-	merge(start, mid, mid, end, a, b);
-	for (size_t i = start; i < end; i++) {
-		a[i] = b[i];
-	}
-}
-
 // ================ Library functions ================ //
 void merge_sort(size_t len, int arr[len], int sorted[len])
 {
@@ -117,12 +100,6 @@ void quick_sort(size_t len, int arr[len], int sorted[len])
 {
 	recursive_part(0, len, arr);
 	copy_array(len, arr, sorted);
-}
-
-void rec_merge_sort(size_t len, int arr[], int sorted_arr[])
-{
-	copy_array(len, arr, sorted_arr);
-	recursive_merge(0, len, len, arr, sorted_arr);
 }
 
 // Print elements in the array
